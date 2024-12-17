@@ -1,5 +1,6 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Murecho:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @mixin Murecho{
     font-family: 'Murecho',sans-serif;
     font-size: 20px;
@@ -19,11 +20,25 @@
     text-decoration-skip-ink: none;
     color:white;
 }
+@mixin Commissioner{
+    font-family: 'Commissioner';
+    font-size: 160px;
+    font-weight: 800;
+    line-height: 128px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+}
 
-
-
+@mixin gradient-text($gradient) {
+    background: $gradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
 body, html{
+
+    max-width: 1440px;
     width: 100dvw;
     padding: 0;
     margin:0;
@@ -35,7 +50,7 @@ body, html{
 .Frame1{
     padding-inline: 125px;
     background: linear-gradient(90deg, #46CDCF 0%, #3D84A8 100%);
-    height:142px;
+    height:147px;
     display: grid;
     grid-template-columns: min-content 1fr min-content;
     grid-template-rows: repeat(2,1fr);
@@ -64,7 +79,6 @@ body, html{
             grid-row: 2;
             display: flex;
             gap:20px;
-          
             .Categories{
                 background-color:#48466D;
                 display: flex;
@@ -81,7 +95,7 @@ body, html{
             }
             .search-box{
                 display: flex;
-                width: 572px;
+                width: 577px;
                 position: relative;
               
                 &__input{
@@ -115,6 +129,53 @@ body, html{
         grid-row:2;
         svg{
         align-self: start;
-    }}
+        }
+    }
 }
-    
+.Frame2{
+    margin-top: -23.5px;
+    //display: flex;
+    width: 100dvw;
+    .gamepad{
+        position: absolute;
+        left: 808px;
+        top:350px;
+
+    }
+    .header{
+        gap:25px;
+        position: absolute;
+        display: flex;
+        left:117px;
+        top:230px;
+        h1{
+            @include Commissioner();
+            @include gradient-text(linear-gradient(0deg, #48466D -0.78%, #3D84A8 34.37%, #46CDCF 66.41%));
+        }
+        h2{
+        @include Commissioner();
+        color:white;
+        // text-shadow: 
+        // 7px 7px 0 #46CDCF, 
+        // -7px -7px 0 #3D84A8, 
+        // 7px -7px 0 #3D84A8, 
+        // -7px 7px 0 #46CDCF;
+
+        position: relative;
+        display: inline-block;
+        &::before {
+            content: "и игры"; /* Дублируем текст */
+            position: absolute;
+            top: 0;
+            left: 0;
+            -webkit-text-stroke: 7px transparent;
+            text-stroke: 2px transparent;
+            background: linear-gradient(90deg, #46CDCF, #3D84A8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent; /* Прозрачный текст */
+            z-index: -1; /* Чтобы градиент находился под основным текстом */
+        }
+       }
+    }
+}
